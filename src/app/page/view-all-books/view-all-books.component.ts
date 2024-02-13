@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class ViewAllBooksComponent implements OnInit{
       private http;
       public bookList:any ={};
-
+      public selectedBook :any;
       constructor(private httpCliant:HttpClient){
           this.http=httpCliant;
       }
@@ -26,5 +26,20 @@ export class ViewAllBooksComponent implements OnInit{
           this.bookList = data;
           console.log(this.bookList);
         });
+      }
+    
+      deleteBook(){
+        let api ="http://localhost:8080/book/"+this.selectedBook.id;
+        this.http.delete(api,{responseType :'text'}).subscribe((responce:string) =>{
+          console.log(responce);
+          this.loadBooks();
+          this.selectedBook=null;
+        });
+        
+      }
+      setSelectedBook(book:any){
+        this.selectedBook=book;
+        console.log("setSelectedBook"+book.id);
+        
       }
 }
