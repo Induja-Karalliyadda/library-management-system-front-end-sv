@@ -5,10 +5,10 @@ import { ViewAllBorrowerComponent } from './borrower/view-all-borrower/view-all-
 export const routes: Routes = [
     {
         path:"view-books",
-        component:ViewAllBooksComponent
+        component : ViewAllBooksComponent
     },
     {
         path:"view-borrowers",
-        component:ViewAllBorrowerComponent
+        component :  ViewAllBorrowerComponent
     }
 ];
