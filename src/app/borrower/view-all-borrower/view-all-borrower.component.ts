@@ -22,7 +22,7 @@ export class ViewAllBorrowerComponent implements OnInit {
   }
 
   loadBorrower() {
-    this.http.get('http://localhost:8080/borrower/get').subscribe((data) => {
+    this.http.get('http://localhost:8081/borrower/get').subscribe((data) => {
       this.borowerList = data
       console.log(this.borowerList);
     });
@@ -30,7 +30,7 @@ export class ViewAllBorrowerComponent implements OnInit {
  
 
   deleteBorrower(){
-    let api = 'http://localhost:8080/borrower/' + this.SelectBorower.id;
+    let api = 'http://localhost:8081/borrower/' + this.SelectBorower.id;
     console.log(this.SelectBorower.id);
     this.http.delete(api,{responseType:'text'}).subscribe((responce :string) =>{
       console.log(responce);
