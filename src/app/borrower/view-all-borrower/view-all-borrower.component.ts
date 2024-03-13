@@ -4,12 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 // import Swal from "sweetalert2"
 import Swal from 'sweetalert2';
+import { NavComponent } from '../../common/nav/nav.component';
 
 
 @Component({
   selector: 'app-view-all-borrower',
   standalone: true,
-  imports: [HttpClientModule,FormsModule,CommonModule],
+  imports: [HttpClientModule,FormsModule,CommonModule,NavComponent],
   templateUrl: './view-all-borrower.component.html',
   styleUrls: ['./view-all-borrower.component.css']
 })
@@ -26,7 +27,7 @@ export class ViewAllBorrowerComponent implements OnInit {
   }
 
   loadBorrower() {
-    this.http.get('http://localhost:8081/borrower/get').subscribe((data) => {
+    this.http.get('http:///localhost:8081/user/get-all-users').subscribe((data) => {
       this.borowerList = data
       console.log(this.borowerList);
     });
