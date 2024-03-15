@@ -1,24 +1,25 @@
 <app-nav></app-nav>
 <div class="table-responsive small container position-static  top-0  ">
-  <table class="table table-striped table-sm">
+  <table class="table table-striped table-sm table-hover ">
     <thead>
       <tr>
         <th scope="col">ID</th>
-        <th scope="col">BID</th>
-        <th scope="col">NIC</th>
         <th scope="col">Name</th>
-        <th scope="col">Contact</th>
         <th scope="col">Address</th>
+        <th scope="col">Address2</th>
+        <th scope="col">Country</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone Number</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let borower of borowerList">
         <td>{{borower.id}}</td>
-        <td>{{borower.bid}}</td>
-        <td>{{borower.nic}}</td>
-        <td>{{borower.name}}</td>
-        <td>{{borower.contact}}</td>
+        <td>{{borower.firstName +" "+borower.lastName+"("+borower.userName+")" }}</td>
         <td>{{borower.address}}</td>
+        <td>{{borower.address2}}</td>
+        <td>{{borower.country}}</td>
+        <td>{{borower.email}}</td>
         <td><button (click)="setSelectBorower(borower)" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger "><i class="bi bi-trash3-fill"></i></button></td>
         <td><button (click)="setSelectBorower(borower)" class="btn btn-primary "data-bs-toggle="modal" data-bs-target="#updateModal" data-bs-whatever="@getbootstrap"><i class="bi bi-pencil-square"></i></button></td>
       </tr>
