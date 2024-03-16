@@ -14,7 +14,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let borower of borowerList">
-        <td>{{borower.id}}</td>
+        <td>#USER {{borower.id}}</td>
         <td>{{borower.firstName +" "+borower.lastName+"("+borower.userName+")" }}</td>
         <td>{{borower.address}}</td>
         <td>{{borower.address2}}</td>
@@ -82,27 +82,39 @@
         <form>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">ID</label>
-            <input type="text"  disabled value="{{SelectBorower?.id}}" class="form-control" id="recipient-name">
+            <input type="text"  disabled value="{{selectedUser?.id}}" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">BID</label>
-            <input type="text"  [(ngModel)]="SelectBorower && SelectBorower.bid" [ngModelOptions]="{standalone:true}"  class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label">First Name</label>
+            <input type="text"  [(ngModel)]="selectedUser && selectedUser.firstName" [ngModelOptions]="{standalone:true}"  class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">NIC</label>
-            <input type="text"  [(ngModel)]="SelectBorower && SelectBorower.nic" [ngModelOptions]="{standalone:true}" class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label">Last Name</label>
+            <input type="text"  [(ngModel)]="selectedUser && selectedUser.lastName" [ngModelOptions]="{standalone:true}" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Name</label>
-            <input type="text"  [(ngModel)]="SelectBorower && SelectBorower.name" [ngModelOptions]="{standalone:true}" class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label">userName</label>
+            <input type="text"  [(ngModel)]="selectedUser && selectedUser.userName" [ngModelOptions]="{standalone:true}" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Contact</label>
-            <input type="number"  [(ngModel)]="SelectBorower && SelectBorower.contact"  [ngModelOptions]="{standalone:true}"   class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label">email</label>
+            <input type="text"  [(ngModel)]="selectedUser && selectedUser.email"  [ngModelOptions]="{standalone:true}"   class="form-control" id="recipient-name">
           </div> 
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">address</label>
-            <input type="text"  [(ngModel)]="SelectBorower && SelectBorower.address" [ngModelOptions]="{standalone:true}" class="form-control" id="recipient-name">
+            <input type="text"  [(ngModel)]="selectedUser && selectedUser.address" [ngModelOptions]="{standalone:true}" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">address 2</label>
+            <input type="text"  [(ngModel)]="selectedUser && selectedUser.address2" [ngModelOptions]="{standalone:true}" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">address</label>
+            <input type="text"  [(ngModel)]="selectedUser && selectedUser.country" [ngModelOptions]="{standalone:true}" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">address</label>
+            <input type="text"  [(ngModel)]="selectedUser && selectedUser.phoneNumber" [ngModelOptions]="{standalone:true}" class="form-control" id="recipient-name">
           </div>
         </form>
       </div>

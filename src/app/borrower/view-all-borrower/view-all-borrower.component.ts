@@ -18,6 +18,18 @@ export class ViewAllBorrowerComponent implements OnInit {
   private http;
   public borowerList: any = [];
   public SelectBorower :any;
+  private baseURL:String ="http://localhost:8081";
+  public selectedUser:any={
+    "id":null,
+    "firstName":null,
+    "lastName":null,
+    "userName":null,
+    "email":null,
+    "address":null,
+    "address2":null,
+    "country":null,
+    "phoneNumber":null
+  }
   
   constructor(private httpCliant: HttpClient) {
     this.http = httpCliant;
@@ -27,7 +39,7 @@ export class ViewAllBorrowerComponent implements OnInit {
   }
 
   loadBorrower() {
-    this.http.get('http:///localhost:8081/user/get-all-users').subscribe((data) => {
+    this.http.get(this.baseURL+'/user/get-all-users').subscribe((data) => {
       this.borowerList = data
       console.log(this.borowerList);
     });
@@ -35,32 +47,32 @@ export class ViewAllBorrowerComponent implements OnInit {
  
 
   deleteBorrower(){
-    let api = 'http://localhost:8081/borrower/' + this.SelectBorower.id;
-    console.log(this.SelectBorower.id);
-    this.http.delete(api,{responseType:'text'}).subscribe((responce :string) =>{
-      console.log(responce);
-      this.loadBorrower(); // Reload data after deletion
-
-      // Swal.fire({
-      //   title: "Good job!",
-      //   text: `${this.SelectBorower.name} is deleted`,
-      //   icon: "success"
-      // });
-      this.SelectBorower=null;
+    this.http.delete(this.baseURL+'/user/delete/'+this.selectedUser.id).subscribe((res) => {
+      console.log("123");
+      console.log(res);
+      this.loadBorrower();
+      Swal.fire({
+        title:"Deleted",
+        text:`You deleted${this.selectedUser.userName} success`,
+        icon:"success"
+      })
     });
   }
   
   setSelectBorower(borower:any){
-    this.SelectBorower=borower;
-    console.log("setSelectedBorrower"+borower.id)
+    this.selectedUser=borower;
+    console.log("setSelectedBorrower"+borower.firstName)
+
   }
   updateBorrower(){
-    let PostApi ="http://localhost:8081/borrower/add";
-    this.http.post(PostApi,this.SelectBorower).subscribe(data=>{
-      console.log("saved");
+    this.http.post(this.baseURL+"/user/add-user",this.selectedUser).subscribe((res:any)=>{
+      console.log(res)
       this.loadBorrower();
-      this.SelectBorower={}
+      Swal.fire({
+        title:"updated !",
+        text:`You Updated ${this.selectedUser.userName}`,
+        icon:"success"
+      })
     })
   }
-  
 }
