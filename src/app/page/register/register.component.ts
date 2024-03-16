@@ -3,6 +3,8 @@ import { HttpClient,HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-register',
@@ -28,7 +30,7 @@ export class RegisterComponent implements OnInit {
     phoneNumber: null,
   };
   
-   constructor(private httpCliant:HttpClient){
+   constructor(private httpCliant:HttpClient,public router:Router){
       this.http=httpCliant;
    } 
 
@@ -63,7 +65,9 @@ export class RegisterComponent implements OnInit {
             title:"Can't Register this user",
             text:`${this.userObj.userName} has already been registed !`,
             icon:"success"
+            
           })
+          this.router.navigate(['/login'])
         })}else{
             Swal.fire({
               title:"Can't Register this user",
