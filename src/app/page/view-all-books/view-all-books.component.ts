@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { NavComponent } from '../../common/nav/nav.component';
+import { RouterLink } from '@angular/router';
 
 // import { Swal } from 'sweetalert2';
 // import Swal  from "sweetalert2"
@@ -13,7 +14,7 @@ import { NavComponent } from '../../common/nav/nav.component';
 @Component({
   selector: 'app-view-all-books',
   standalone: true,
-  imports: [HttpClientModule,FormsModule,CommonModule,NavComponent],
+  imports: [HttpClientModule,FormsModule,CommonModule,NavComponent,RouterLink],
   templateUrl: './view-all-books.component.html',
   styleUrl: './view-all-books.component.css'
 })
