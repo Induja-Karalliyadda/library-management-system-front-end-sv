@@ -1,1 +1,55 @@
-<p>add-books works!</p>
+<div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <h2>Add New Book Form</h2>
+      </div>
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-3">BOOK DETAILS</h4>
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="firstName" class="form-label">isbn</label>
+                <input type="text" class="form-control" id="firstName" placeholder="input isbn of a Book" value="" required 
+                [(ngModel)]="book && book.isbn" [ngModelOptions]="{standalone:true}" >
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="username" class="form-label">Title</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text"></span>
+                  <input type="text" class="form-control" id="username" placeholder="input title of a Book" required   [(ngModel)]="book && book.title" [ngModelOptions]="{standalone:true}">
+                <div class="invalid-feedback">
+                    Your username is required.
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-12">
+                <label for="text" class="form-label">Author </label>
+                <input type="text" class="form-control" id="text" placeholder="input Author of a Book"   [(ngModel)]="book && book.author" [ngModelOptions]="{standalone:true}">
+                <div class="invalid-feedback">
+                  Please enter a valid email address for shipping updates.
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="text" class="form-label">Category </label>
+                <input type="text" class="form-control" id="text" placeholder="input Author of a Book"   [(ngModel)]="book && book.category" [ngModelOptions]="{standalone:true}">
+                <div class="invalid-feedback">
+                  Please enter a valid email address for shipping updates.
+                </div>
+              </div>
+
+              <div class="col-6">
+                <label for="address" class="form-label">Qty</label>
+                <input type="number" class="form-control" id="address" placeholder="input a qty of a Book" required   [(ngModel)]="book && book.qty" [ngModelOptions]="{standalone:true}">
+                <div class="invalid-feedback">
+                  Please enter your shipping address.
+                </div>
+              </div>
+              <div>
+                <button type="button" value="add Book" class="btn btn-success" (click)="addBook()" >Success</button>
+              </div>
+  
+              

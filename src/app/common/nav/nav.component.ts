@@ -8,5 +8,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './nav.component.css'
 })
 export class NavComponent {
-
+signOut(){
+  
+}
 }
