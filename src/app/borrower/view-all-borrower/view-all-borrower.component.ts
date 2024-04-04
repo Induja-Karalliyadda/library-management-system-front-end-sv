@@ -18,7 +18,10 @@ export class ViewAllBorrowerComponent implements OnInit {
   private http;
   public borowerList: any = [];
   public SelectBorower :any;
+  public userName:String="";
+  public user:any;
   private baseURL:String ="http://localhost:8081";
+  
   public selectedUser:any={
     "id":null,
     "firstName":null,
@@ -30,7 +33,14 @@ export class ViewAllBorrowerComponent implements OnInit {
     "country":null,
     "phoneNumber":null
   }
-  
+  public borrowerBook:any={
+    userId:"",
+    bookid:"",
+    date:new Date(),
+    fine:"",
+    qty:"",
+
+  }
   constructor(private httpCliant: HttpClient) {
     this.http = httpCliant;
   }
@@ -74,5 +84,14 @@ export class ViewAllBorrowerComponent implements OnInit {
         icon:"success"
       })
     })
+ 
+  }
+  serarchUser(){
+    console.log(this.userName);
+    this.http.get(`http://localhost:8081/user/find-by-user-name/${this.userName}`).subscribe(data=>{
+      console.log(data)
+      this.user=data;
+    })
+
   }
 }

@@ -3,7 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -24,8 +24,20 @@ export class LoginComponent {
     console.log(res)
     if(res == true){
       this.router.navigate(['/view-books']);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500
+      });
     }else{
-      alert("You can't login!")
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Check your user name & password!",
+       
+      });
     }
    })
   }
